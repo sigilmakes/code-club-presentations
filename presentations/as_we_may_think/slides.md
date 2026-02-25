@@ -47,17 +47,13 @@ hideInToc: true
 
 # Prelude: Information Complexity
 
-In 1945, Vannevar Bush wrote *"As We May Think"* — arguing that the explosion of scientific research had outpaced our ability to navigate it.
-
-Producing information isn't the problem. *Finding and connecting it is.*
+In 1945, Vannevar Bush wrote *"As We May Think"* — arguing that the explosion of scientific research had outpaced our ability to navigate it. He argued that producing information wasn't the problem, instead *finding and connecting it was.*
 
 <v-click>
 
 <div class="mt-4" style="color: #955438">
 
 **80 years later, the problem has only scaled up.**
-
-Software systems, research output, and digital information are growing faster than ever — and we still need better tools to think with.
 
 </div>
 
@@ -79,6 +75,7 @@ layout: center
 
 - "AI is a magic tool that will solve cancer, climate change, and all of science"
 - I have a bridge to sell to the people who say this
+- I still have 200 different major concerns about the implications of the technology for society
 
 </v-click>
 
@@ -86,7 +83,7 @@ layout: center
 
 ## What it *is* about:
 
-- AI agents are a genuinely new way to use computers for science, research, and development
+- When used *right*, AI agents are a genuinely new way to use computers for science, research, and development
 - I haven't written a line of code myself in 2 months, and it's been very surreal
 - I want to show you how
 
@@ -270,7 +267,7 @@ hideInToc: true
 
 ### Vendor-locked
 - **Antigravity IDE** — Google *(FREE!)*
-- **Claude Code** — Anthropic *(Paid)*
+- **Claude Code** — Anthropic *(Paid, somewhat "industry standard")*
 - **Codex** — OpenAI *(Paid)*
 
 </div>
