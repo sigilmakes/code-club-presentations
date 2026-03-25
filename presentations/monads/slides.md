@@ -302,7 +302,7 @@ Where a class hides **state**, a monad hides **control flow**.
 
 </div>
 
-<img src="./images/izutsumi.png" class="absolute bottom-8 right-12 h-32" />
+<img src="./images/kurisu.jpg" class="absolute bottom-8 right-12 h-36 rounded" />
 
 </v-click>
 
