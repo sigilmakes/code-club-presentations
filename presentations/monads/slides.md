@@ -185,10 +185,10 @@ So what do these boxes have in common? Three ingredients:
 1. **A box type** — wraps a value
    - `Maybe(42)`, `[1, 2, 3]`
 
-2. **Wrap** — put a value in the box, written $\text{wrap}(x)$
+2. **Wrap** — put a value in the box
    - `Maybe(x)`, `[x]`
 
-3. **Bind** — chain operations on a box $m$ with a function $f$, written $m \gg\!= f$
+3. **Bind** — chain operations: `box.bind(f)` gives you a new box
    - Maybe's bind skips if empty
    - List's bind applies to each element and flattens
 
@@ -273,13 +273,13 @@ What makes a box a *monad* and not just a box?
 
 <v-clicks>
 
-1. **Left identity:** $\;\text{wrap}(a) \gg\!= f \;=\; f(a)$
+1. **Left identity:** `Maybe(a).bind(f)` = `f(a)`
    - Putting a value in a box and immediately using it should be the same as just using it. The box doesn't get in the way.
 
-2. **Right identity:** $\;m \gg\!= \text{wrap} \;=\; m$
+2. **Right identity:** `m.bind(Maybe)` = `m`
    - If all you do is re-wrap the value, nothing changes. The box doesn't add anything you didn't ask for.
 
-3. **Associativity:** $\;(m \gg\!= f) \gg\!= g \;=\; m \gg\!= (\lambda x.\; f(x) \gg\!= g)$
+3. **Associativity:** `m.bind(f).bind(g)` = `m.bind(lambda x: f(x).bind(g))`
    - It doesn't matter how you group a chain of operations — the result is the same. You can refactor freely.
 
 </v-clicks>
