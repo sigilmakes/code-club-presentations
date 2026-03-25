@@ -308,15 +308,15 @@ if data is not None:
 
 <v-click>
 
-With Maybe — the box handles it:
+With Result — the box handles it, *and* tells you what went wrong:
 
 ```python
-result = (Maybe("readings.csv")
+result = (Result.ok("readings.csv")
     .bind(read_csv)
     .bind(lambda d: parse_floats(d, "temperature"))
     .bind(remove_outliers)
     .bind(mean))
-# Either Maybe(23.4) or Maybe(None) — no pyramid, no crashes
+# Either Ok(23.4) or Err("no data left after removing outliers")
 ```
 
 </v-click>
