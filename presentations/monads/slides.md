@@ -582,8 +582,12 @@ here is a gorilla holding a banana and the entire jungle
 </div>
 
 ---
+layout: two-cols-header
+---
 
 # what if you just... didn't have variables?
+
+::left::
 
 so we've been using monads to make Python nicer. but some languages went further.
 
@@ -597,10 +601,10 @@ so how do you do anything?
 
 <v-clicks>
 
-- need to read a file? **IO monad** — side effects live in a box
-- need to track state? **State monad** — state gets threaded through the chain
-- need randomness? the random seed is just state in a box
-- need to print something? that's IO. **that's a monad too**
+- need to read a file? **IO monad**
+- need to track state? **State monad**
+- need randomness? state in a box
+- need to print? that's IO. **monad too**
 
 </v-clicks>
 
@@ -608,13 +612,19 @@ so how do you do anything?
 
 <div class="mt-4" style="color: #d4639a">
 
-Haskell doesn't have variables. it has boxes. it's monads all the way down.
+it's monads all the way down.
 
-<img src="./images/teto.jpg" class="absolute bottom-4 right-4 h-64 rounded" />
-
-**(This is why I thought last week's code club challenged was unfair. Imagine doing python without variables)**
+**(this is why I thought last week's code club challenge was unfair. imagine doing python without variables)**
 
 </div>
+
+</v-click>
+
+::right::
+
+<v-click at="1">
+
+<img src="./images/teto.jpg" class="w-full rounded mt-8" />
 
 </v-click>
 
