@@ -553,39 +553,6 @@ Classes hide **what's inside**. Monads hide **what happens between steps**.
 
 ---
 
-# What If You Just... Didn't Have Variables?
-
-In Haskell, there's no mutable state. No variables. Just functions and values.
-
-<v-click>
-
-So how do you do anything?
-
-</v-click>
-
-<v-clicks>
-
-- Need to read a file? **IO monad** — side effects live in a box
-- Need to track state? **State monad** — state gets threaded through the chain
-- Need randomness? **monad** — the random seed is just state in a box
-- Need to print something? That's IO. **That's a monad too**
-
-</v-clicks>
-
-<v-click>
-
-<div class="mt-4" style="color: #d4639a">
-
-Haskell doesn't have variables. It has boxes. It's monads all the way down.
-
-This either makes you want to learn Haskell or never touch it. Both are valid.
-
-</div>
-
-</v-click>
-
----
-
 # Why Not Just Use Classes?
 
 You *can* solve these problems with classes. People do. It gets messy.
@@ -663,6 +630,41 @@ here is a gorilla holding a banana and the entire jungle
 </v-click>
 
 </div>
+
+---
+
+# What If You Just... Didn't Have Variables?
+
+So we've been using monads to make Python nicer. But some languages went further.
+
+<v-click>
+
+In Haskell, there's no mutable state. No variables. Just functions and values.
+
+So how do you do anything?
+
+</v-click>
+
+<v-clicks>
+
+- Need to read a file? **IO monad** — side effects live in a box
+- Need to track state? **State monad** — state gets threaded through the chain
+- Need randomness? The random seed is just state in a box
+- Need to print something? That's IO. **That's a monad too**
+
+</v-clicks>
+
+<v-click>
+
+<div class="mt-4" style="color: #d4639a">
+
+Haskell doesn't have variables. It has boxes. It's monads all the way down.
+
+This either makes you want to learn Haskell or never touch it. Both are valid.
+
+</div>
+
+</v-click>
 
 ---
 
