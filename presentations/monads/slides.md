@@ -273,9 +273,9 @@ What makes a box a *monad* and not just a box?
 
 <v-clicks>
 
-1. **Wrapping then chaining** = just calling the function
-2. **Chaining with "just re-wrap it"** = doing nothing
-3. **Chaining is associative** — grouping doesn't matter
+1. **Left identity:** $\;\text{wrap}(a) \gg\!= f \;=\; f(a)$
+2. **Right identity:** $\;m \gg\!= \text{wrap} \;=\; m$
+3. **Associativity:** $\;(m \gg\!= f) \gg\!= g \;=\; m \gg\!= (\lambda x.\; f(x) \gg\!= g)$
 
 </v-clicks>
 
@@ -283,7 +283,7 @@ What makes a box a *monad* and not just a box?
 
 <div class="mt-8" style="color: #d4639a">
 
-Same idea as arithmetic: putting 0 in shouldn't change anything, and (1+2)+3 = 1+(2+3).
+Same idea as arithmetic: wrapping shouldn't change anything, and grouping doesn't matter.
 
 These guarantee your chains compose predictably.
 
