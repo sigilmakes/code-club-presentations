@@ -91,8 +91,6 @@ this is horrible and I hate it and you should too.
 
 </div>
 
-<img src="./images/frieren.jpg" class="absolute bottom-8 right-8 h-36 rounded" />
-
 </v-click>
 
 ---
@@ -214,7 +212,7 @@ same bind, same pattern — but now the error message comes along for the ride. 
 
 </div>
 
-<img src="./images/frieren_smug.jpg" class="absolute bottom-8 right-8 h-36 rounded" />
+<img src="./images/frieren.jpg" class="absolute bottom-8 right-8 h-36 rounded" />
 
 </v-click>
 
@@ -252,6 +250,8 @@ result = (Result.ok("readings.csv")
     .bind(mean))
 # Ok(23.4) or Err("column 'temperature' contains non-numeric values")
 ```
+
+<img src="./images/frieren.jpg" class="absolute bottom-8 right-8 h-36 rounded" />
 
 </v-click>
 
