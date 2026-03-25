@@ -308,6 +308,65 @@ You just need a box and a chain.
 
 ---
 
+# Lifting: What a Functor Does
+
+A functor takes a function between values and **lifts** it to a function between boxes.
+
+<v-click>
+
+<div class="mt-8 flex justify-center">
+<div class="text-center">
+
+<div class="flex items-center gap-4 justify-center text-xl">
+  <div class="px-4 py-2 rounded" style="background: rgba(155, 114, 207, 0.2)">5</div>
+  <div>──<code>double</code>──→</div>
+  <div class="px-4 py-2 rounded" style="background: rgba(155, 114, 207, 0.2)">10</div>
+</div>
+
+<div class="flex items-center gap-4 justify-center my-4 text-sm opacity-60">
+  <div>↓ wrap in list</div>
+  <div class="w-24"></div>
+  <div>↓ wrap in list</div>
+</div>
+
+<div class="flex items-center gap-4 justify-center text-xl">
+  <div class="px-4 py-2 rounded" style="background: rgba(212, 99, 154, 0.2)">[5]</div>
+  <div>──<code>map(double)</code>──→</div>
+  <div class="px-4 py-2 rounded" style="background: rgba(212, 99, 154, 0.2)">[10]</div>
+</div>
+
+</div>
+</div>
+
+</v-click>
+
+<v-click>
+
+<div class="mt-8 text-center">
+
+```python
+def double(x):  return x * 2       # a function between numbers
+list(map(double, [5]))              # the same function, between lists
+```
+
+</div>
+
+</v-click>
+
+<v-click>
+
+<div class="mt-4 text-center" style="color: #d4639a">
+
+The box doesn't change what the function does — it just lets it work on boxed values.
+
+Every monad is a functor. This is what <code>map</code> means.
+
+</div>
+
+</v-click>
+
+---
+
 # The Three Rules
 
 What makes a box a *monad* and not just a box? Three rules:
