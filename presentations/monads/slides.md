@@ -179,25 +179,28 @@ Ok but what if the box has *multiple things in it*? Bind means: apply a function
 <v-click>
 
 ```python
-def expand(x):
-    return [x, x * 10]
+class List:
+    def __init__(self, values):
+        self.values = values
 
-# bind: apply to each element, flatten
-[1, 2, 3]  →  expand each  →  [1, 10, 2, 20, 3, 30]
+    def bind(self, func):
+        result = []
+        for item in self.values:
+            result.extend(func(item))   # apply, then flatten
+        return List(result)
 ```
 
 </v-click>
 
 <v-click>
 
-You already do this — it's a list comprehension:
-
 ```python
-[(x, y) for x in [1, 2, 3] for y in ['a', 'b']]
-# [(1,'a'), (1,'b'), (2,'a'), (2,'b'), (3,'a'), (3,'b')]
-```
+def expand(x):
+    return List([x, x * 10])
 
-Each `for` is a bind. The list box handles the iteration and combination for you.
+List([1, 2, 3]).bind(expand)
+# List([1, 10, 2, 20, 3, 30])
+```
 
 </v-click>
 
@@ -206,6 +209,27 @@ Each `for` is a bind. The list box handles the iteration and combination for you
 <div class="mt-4" style="color: #9b72cf">
 
 Maybe handles missing values. List handles multiple values. Same interface, same idea. I know. I know. Stay with me.
+
+</div>
+
+</v-click>
+
+---
+layout: center
+---
+
+# You Already Do This
+
+```python
+[(x, y) for x in [1, 2, 3] for y in ['a', 'b']]
+# [(1,'a'), (1,'b'), (2,'a'), (2,'b'), (3,'a'), (3,'b')]
+```
+
+<v-click>
+
+<div class="mt-8 text-xl">
+
+Each <code>for</code> is a bind. That's the list monad. You've been using it this whole time.
 
 </div>
 
