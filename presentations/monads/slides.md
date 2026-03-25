@@ -393,6 +393,60 @@ You need a box and a chain. I promise.
 
 ---
 
+# Monads vs Classes
+
+<div class="grid grid-cols-2 gap-8 mt-4">
+
+<div>
+
+### A class gives you:
+- A wrapper for data (`__init__`)
+- Methods that operate on that data
+- Encapsulation — hide the internals
+
+```python
+class User:
+    def __init__(self, name):
+        self.name = name
+    def greet(self):
+        return f"hi, {self.name}"
+```
+
+</div>
+
+<div>
+
+### A monad gives you:
+- A wrapper for data (`wrap`)
+- A chaining operation (`bind`)
+- Encapsulation — hide the *control flow*
+
+```python
+class Maybe:
+    def __init__(self, value):
+        self.value = value
+    def bind(self, func):
+        if self.value is None:
+            return Maybe(None)
+        return func(self.value)
+```
+
+</div>
+
+</div>
+
+<v-click>
+
+<div class="mt-4 text-center" style="color: #d4639a">
+
+Classes hide **what's inside**. Monads hide **what happens between steps**.
+
+</div>
+
+</v-click>
+
+---
+
 # So About That Quote
 
 Remember this?
@@ -443,7 +497,6 @@ A **monoid** is something with an identity and an associative operation — that
 
 So yeah. A monad is a monoid in the category of endofunctors. You know what that means now.
 
-<img src="./images/smirk.png" class="absolute bottom-4 right-4 h-28 rounded" />
 
 </div>
 
