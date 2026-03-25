@@ -91,6 +91,8 @@ this is horrible and I hate it and you should too.
 
 </div>
 
+<img src="./images/frieren_smug.jpg" class="absolute bottom-8 right-8 h-36 rounded" />
+
 </v-click>
 
 ---
@@ -211,8 +213,6 @@ def bind(self, func):
 same bind, same pattern — but now the error message comes along for the ride. no more silent failures.
 
 </div>
-
-<img src="./images/frieren.jpg" class="absolute bottom-8 right-8 h-36 rounded" />
 
 </v-click>
 
