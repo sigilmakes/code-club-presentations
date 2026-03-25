@@ -306,65 +306,6 @@ Where a class hides **state**, a monad hides **control flow**.
 
 ---
 
-# Lifting: What a Functor Does
-
-A functor takes a function between values and **lifts** it to a function between boxes.
-
-<v-click>
-
-<div class="mt-8 flex justify-center">
-<div class="text-center">
-
-<div class="flex items-center gap-4 justify-center text-xl">
-  <div class="px-4 py-2 rounded" style="background: rgba(155, 114, 207, 0.2)">5</div>
-  <div>──<code>double</code>──→</div>
-  <div class="px-4 py-2 rounded" style="background: rgba(155, 114, 207, 0.2)">10</div>
-</div>
-
-<div class="flex items-center gap-4 justify-center my-4 text-sm opacity-60">
-  <div>↓ wrap in list</div>
-  <div class="w-24"></div>
-  <div>↓ wrap in list</div>
-</div>
-
-<div class="flex items-center gap-4 justify-center text-xl">
-  <div class="px-4 py-2 rounded" style="background: rgba(212, 99, 154, 0.2)">[5]</div>
-  <div>──<code>map(double)</code>──→</div>
-  <div class="px-4 py-2 rounded" style="background: rgba(212, 99, 154, 0.2)">[10]</div>
-</div>
-
-</div>
-</div>
-
-</v-click>
-
-<v-click>
-
-<div class="mt-8 text-center">
-
-```python
-def double(x):  return x * 2       # a function between numbers
-list(map(double, [5]))              # the same function, between lists
-```
-
-</div>
-
-</v-click>
-
-<v-click>
-
-<div class="mt-4 text-center" style="color: #d4639a">
-
-The box doesn't change what the function does — it just lets it work on boxed values.
-
-Every monad is a functor. This is what <code>map</code> means. It's honestly kind of beautiful.
-
-</div>
-
-</v-click>
-
----
-
 # The Three Rules
 
 Ok here's where it gets a bit formal. Sorry. What makes a box a *monad* and not just a box?
@@ -441,6 +382,60 @@ You just compose them. They don't step on each other.
 You do not need category theory to use a monad.
 
 You need a box and a chain. I promise.
+
+</div>
+
+</v-click>
+
+---
+
+# So About That Quote
+
+Remember this?
+
+> "A monad is just a monoid in the category of endofunctors"
+
+<v-click>
+
+A **functor** takes a function between values and lifts it to a function between boxes.
+
+<div class="mt-4 flex justify-center">
+<div class="text-center">
+
+<div class="flex items-center gap-4 justify-center text-xl">
+  <div class="px-4 py-2 rounded" style="background: rgba(155, 114, 207, 0.2)">5</div>
+  <div>──<code>double</code>──→</div>
+  <div class="px-4 py-2 rounded" style="background: rgba(155, 114, 207, 0.2)">10</div>
+</div>
+
+<div class="flex items-center gap-4 justify-center my-4 text-sm opacity-60">
+  <div>↓ wrap in list</div>
+  <div class="w-24"></div>
+  <div>↓ wrap in list</div>
+</div>
+
+<div class="flex items-center gap-4 justify-center text-xl">
+  <div class="px-4 py-2 rounded" style="background: rgba(212, 99, 154, 0.2)">[5]</div>
+  <div>──<code>map(double)</code>──→</div>
+  <div class="px-4 py-2 rounded" style="background: rgba(212, 99, 154, 0.2)">[10]</div>
+</div>
+
+</div>
+</div>
+
+</v-click>
+
+<v-click>
+
+An **endofunctor** is a functor from a category to itself — our boxes map Python types to Python types. A **monoid** is something with an identity and an associative operation — that's our three rules.
+
+</v-click>
+
+<v-click>
+
+<div class="mt-4" style="color: #d4639a">
+
+So yeah. A monad is a monoid in the category of endofunctors. You know what that means now.
 
 </div>
 
