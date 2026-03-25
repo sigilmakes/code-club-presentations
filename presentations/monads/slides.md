@@ -22,7 +22,7 @@ download: true
 ---
 
 # what the hell is a monad?
-A very professional presentation about boxes
+a very professional presentation about boxes
 
 Willow Sparks · Code Club · April Fools
 
@@ -31,7 +31,7 @@ layout: center
 hideInToc: true
 ---
 
-# "A monad is just a monoid in the category of endofunctors"
+# "a monad is a monoid in the category of endofunctors"
 
 <v-click>
 
@@ -91,7 +91,7 @@ this is horrible and I hate it and you should too.
 
 </div>
 
-<img src="./images/frieren_smug.jpg" class="absolute bottom-8 right-8 h-36 rounded" />
+<img src="./images/frieren_smug.jpg" class="absolute bottom-14 right-14 h-64 rounded" />
 
 </v-click>
 
@@ -262,7 +262,7 @@ Maybe handles missing values. List handles multiple values. same interface, same
 layout: center
 ---
 
-# YOU ALREADY DO THIS
+# *YOU HAVE BEEN USING MONADS THIS ENTIRE TIME*
 
 ```python
 [(x, y) for x in [1, 2, 3] for y in ['a', 'b']]
@@ -278,21 +278,6 @@ each <code>for</code> is a bind. that's the List monad. you've been using it thi
 </div>
 
 </v-click>
-
----
-layout: center
-hideInToc: true
----
-
-<div class="text-center">
-
-
-# **_YOU HAVE BEEN USING MONADS THIS ENTIRE TIME_**
-
-im sorry nobody told u
-
-
-</div>
 
 ---
 
@@ -471,7 +456,7 @@ classes hide **what's inside**. monads hide **what happens between steps**.
 
 # why not just use classes?
 
-you *can* solve these problems with classes. people do. it gets messy.
+you *can* solve these problems with classes but it gets messy.
 
 <v-click>
 
@@ -492,9 +477,9 @@ monads compose through **chaining**, not inheritance. you snap boxes together.
 Result.ok("data.csv").bind(read_csv).bind(validate).bind(log)
 ```
 
-no inheritance tree. no diamond problem. no `AsyncLoggedValidatedSafeCSVReaderFactory`.
+no `AsyncLoggedValidatedSafeCSVReaderFactory`.
 
-Rust doesn't even *have* inheritance. it uses monadic types instead. it's fine. it's better, actually.
+(rust doesn't even *have* inheritance. it uses monadic types instead)
 
 </v-click>
 
@@ -642,7 +627,7 @@ a **monoid** is something with an identity and an associative operation — that
 
 <div class="mt-4" style="color: #d4639a">
 
-so yeah. a monad is a monoid in the category of endofunctors. you know what that means now.
+a monad is a monoid in the category of endofunctors. you know what that means now.
 
 
 </div>
@@ -654,7 +639,7 @@ layout: center
 hideInToc: true
 ---
 
-# A monad is a box you can put things in
+# a monad is a box you can put things in
 
 <div class="mt-4 text-lg opacity-50">
 
@@ -664,7 +649,7 @@ and chain operations on, without worrying about the plumbing
 
 <div class="mt-4 text-sm opacity-40">
 
-I told you it wasn't that bad
+i told you it wasn't that bad
 
 </div>
 

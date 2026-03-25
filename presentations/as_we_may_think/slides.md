@@ -186,6 +186,14 @@ layout: two-cols-header
 </v-click>
 
 ---
+hideInToc: true
+---
+
+# Conway's Game of Life
+
+<GameOfLife />
+
+---
 layout: center
 ---
 
