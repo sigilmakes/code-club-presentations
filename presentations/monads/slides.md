@@ -107,9 +107,6 @@ class Maybe:
         if self.value is None:
             return Maybe(None)    # empty? skip it
         return func(self.value)   # otherwise, run the function
-
-    def __repr__(self):
-        return f"Maybe({self.value})"
 ```
 
 </v-click>
@@ -117,11 +114,11 @@ class Maybe:
 <v-click>
 
 ```python
-def half(x):
-    return Maybe(x // 2) if x % 2 == 0 else Maybe(None)
+# Same example as before — but now the box handles the None checks
+Maybe(42).bind(get_user).bind(get_address).bind(get_postcode)
 
-Maybe(16).bind(half).bind(half).bind(half)              # Maybe(2)
-Maybe(16).bind(half).bind(half).bind(half).bind(half)   # Maybe(None)
+# If get_user returns Maybe(None), the chain stops.
+# No ifs. No crashes. No pyramid of doom.
 ```
 
 </v-click>
@@ -130,7 +127,7 @@ Maybe(16).bind(half).bind(half).bind(half).bind(half)   # Maybe(None)
 
 <div style="color: #d4639a">
 
-No ifs. No crashes. The box handles the emptiness between steps.
+The box handles the emptiness between steps for you.
 
 </div>
 
