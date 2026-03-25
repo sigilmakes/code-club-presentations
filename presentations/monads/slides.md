@@ -274,22 +274,15 @@ What makes a box a *monad* and not just a box?
 <v-clicks>
 
 1. **Left identity:** $\;\text{wrap}(a) \gg\!= f \;=\; f(a)$
+   - Putting a value in a box and immediately using it should be the same as just using it. The box doesn't get in the way.
+
 2. **Right identity:** $\;m \gg\!= \text{wrap} \;=\; m$
+   - If all you do is re-wrap the value, nothing changes. The box doesn't add anything you didn't ask for.
+
 3. **Associativity:** $\;(m \gg\!= f) \gg\!= g \;=\; m \gg\!= (\lambda x.\; f(x) \gg\!= g)$
+   - It doesn't matter how you group a chain of operations — the result is the same. You can refactor freely.
 
 </v-clicks>
-
-<v-click>
-
-<div class="mt-8" style="color: #d4639a">
-
-Same idea as arithmetic: wrapping shouldn't change anything, and grouping doesn't matter.
-
-These guarantee your chains compose predictably.
-
-</div>
-
-</v-click>
 
 ---
 
