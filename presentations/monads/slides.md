@@ -52,7 +52,7 @@ layout: center
 
 <div class="mt-8 text-lg opacity-70">
 
-I promise. we can go from here.
+I promise. We can go from here.
 
 </div>
 
@@ -62,7 +62,7 @@ I promise. we can go from here.
 
 # The Problem
 
-So. Things go wrong. Values might be missing. And Python makes you deal with it like this.
+So things go wrong when processing stuff. Values might be missing and you need to handle it. You might do this:
 
 <v-click>
 
@@ -82,9 +82,11 @@ if user is not None:
 
 <div class="mt-4" style="color: #d4639a">
 
+
 Every step needs a check. This is four levels of nesting for three functions.
 
-It gets worse. It always gets worse.
+This is horrible and I hate it and you should too.
+
 
 </div>
 
@@ -127,7 +129,42 @@ Maybe(42).bind(get_user).bind(get_address).bind(get_postcode)
 
 <div style="color: #d4639a">
 
-The box handles the emptiness between steps. You just don't have to think about it. It's nice.
+The box handles everything. We don't have to think about it. This is nice.
+
+</div>
+
+</v-click>
+
+---
+
+# The Result Monad
+
+So Maybe has a problem — when something goes wrong it just... goes empty. Doesn't tell you *why*. This is annoying. Result fixes this.
+
+<v-click>
+
+Two states:
+- `Ok(value)` — it worked, here's the answer
+- `Err(message)` — it failed, here's why
+
+</v-click>
+
+<v-click>
+
+```python
+def bind(self, func):
+    if self.is_err:
+        return self               # failed? carry the error forward
+    return func(self.value)       # otherwise, keep going
+```
+
+</v-click>
+
+<v-click>
+
+<div style="color: #d4639a">
+
+Same bind, same pattern — but now the error message comes along for the ride. No more silent failures. Thank god.
 
 </div>
 
@@ -283,41 +320,6 @@ Ok here's where it gets a bit formal. Sorry. What makes a box a *monad* and not 
    - It doesn't matter how you group a chain of operations — the result is the same. You can refactor freely.
 
 </v-clicks>
-
----
-
-# The Result Monad
-
-So Maybe has a problem — when something goes wrong it just... goes empty. Doesn't tell you *why*. This is annoying. Result fixes this.
-
-<v-click>
-
-Two states:
-- `Ok(value)` — it worked, here's the answer
-- `Err(message)` — it failed, here's why
-
-</v-click>
-
-<v-click>
-
-```python
-def bind(self, func):
-    if self.is_err:
-        return self               # failed? carry the error forward
-    return func(self.value)       # otherwise, keep going
-```
-
-</v-click>
-
-<v-click>
-
-<div style="color: #d4639a">
-
-Same bind, same pattern — but now the error message comes along for the ride. No more silent failures. Thank god.
-
-</div>
-
-</v-click>
 
 ---
 
