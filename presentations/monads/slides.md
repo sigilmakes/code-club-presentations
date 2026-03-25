@@ -251,7 +251,7 @@ result = (Result.ok("readings.csv")
 # Ok(23.4) or Err("column 'temperature' contains non-numeric values")
 ```
 
-<img src="./images/frieren.jpg" class="absolute bottom-8 right-8 h-36 rounded" />
+<img src="./images/frieren.jpg" class="absolute bottom-4 right-20 h-32 rounded" />
 
 </v-click>
 
