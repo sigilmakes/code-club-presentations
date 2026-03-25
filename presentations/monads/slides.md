@@ -96,7 +96,7 @@ This is horrible and I hate it and you should too.
 
 # A Smarter Box: Maybe
 
-What if the box just... handled it?
+What if we put everything in a box that just... handled it?
 
 <v-click>
 
@@ -137,7 +137,7 @@ The box handles everything. We don't have to think about it. This is nice.
 
 ---
 
-# The Result Monad
+# More Monads! The Result Monad
 
 So Maybe has a problem — when something goes wrong it just... goes empty. Doesn't tell you *why*. This is annoying. Result fixes this.
 
@@ -164,9 +164,46 @@ def bind(self, func):
 
 <div style="color: #d4639a">
 
-Same bind, same pattern — but now the error message comes along for the ride. No more silent failures. Thank god.
+Same bind, same pattern — but now the error message comes along for the ride. No more silent failures.
 
 </div>
+
+</v-click>
+
+---
+
+# Putting It Together: A Data Pipeline
+
+<v-click>
+
+Without monads:
+
+```python
+data = read_csv("readings.csv")
+if data is not None:
+    column = parse_floats(data, "temperature")
+    if column is not None:
+        cleaned = remove_outliers(column)
+        if cleaned is not None:
+            result = mean(cleaned)
+            if result is not None:
+                print(f"Mean temperature: {result}")
+```
+
+</v-click>
+
+<v-click>
+
+With Result:
+
+```python
+result = (Result.ok("readings.csv")
+    .bind(read_csv)
+    .bind(lambda d: parse_floats(d, "temperature"))
+    .bind(remove_outliers)
+    .bind(mean))
+# Ok(23.4) or Err("column 'temperature' contains non-numeric values")
+```
 
 </v-click>
 
@@ -218,7 +255,7 @@ Maybe handles missing values. List handles multiple values. Same interface, same
 layout: center
 ---
 
-# You Already Do This
+# YOU ALREADY DO THIS
 
 ```python
 [(x, y) for x in [1, 2, 3] for y in ['a', 'b']]
@@ -259,7 +296,7 @@ Right, so what do these have in common? Three ingredients:
 
 <div class="mt-4" style="color: #d4639a">
 
-A box + wrap + bind. That's it. That's a monad. I'm not even being reductive, that's genuinely the whole thing.
+A box + wrap + bind. That's a monad.
 
 Where a class hides **state**, a monad hides **control flow**.
 
@@ -344,53 +381,6 @@ Ok here's where it gets a bit formal. Sorry. What makes a box a *monad* and not 
    - It doesn't matter how you group a chain of operations — the result is the same. You can refactor freely.
 
 </v-clicks>
-
----
-
-# Putting It Together: A Data Pipeline
-
-<v-click>
-
-Without monads:
-
-```python
-data = read_csv("readings.csv")
-if data is not None:
-    column = parse_floats(data, "temperature")
-    if column is not None:
-        cleaned = remove_outliers(column)
-        if cleaned is not None:
-            result = mean(cleaned)
-            if result is not None:
-                print(f"Mean temperature: {result}")
-```
-
-</v-click>
-
-<v-click>
-
-With Result:
-
-```python
-result = (Result.ok("readings.csv")
-    .bind(read_csv)
-    .bind(lambda d: parse_floats(d, "temperature"))
-    .bind(remove_outliers)
-    .bind(mean))
-# Ok(23.4) or Err("column 'temperature' contains non-numeric values")
-```
-
-</v-click>
-
-<v-click>
-
-<div style="color: #9b72cf">
-
-Same logic, no nesting. If something breaks, it tells you what. Like software should have been doing this whole time, honestly.
-
-</div>
-
-</v-click>
 
 ---
 
