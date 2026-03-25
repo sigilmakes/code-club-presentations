@@ -60,9 +60,9 @@ I promise. We can go from here.
 
 ---
 
-# The Problem
+# the problem
 
-So things go wrong when processing stuff. Values might be missing and you need to handle it. You might do this:
+so things go wrong when processing stuff. values might be missing and you need to handle it. you might do this:
 
 <v-click>
 
@@ -83,9 +83,9 @@ if user is not None:
 <div class="mt-4" style="color: #d4639a">
 
 
-Every step needs a check. This is four levels of nesting for three functions.
+every step needs a check. this is four levels of nesting for three functions.
 
-This is horrible and I hate it and you should too.
+this is horrible and I hate it and you should too.
 
 
 </div>
@@ -135,9 +135,9 @@ IT WAS CALLED A MONAD
 
 ---
 
-# A Smarter Box: Maybe
+# a smarter box: Maybe
 
-What if we put everything in a box that just... handled it?
+what if we put everything in a box that just... handled it?
 
 <v-click>
 
@@ -170,7 +170,7 @@ Maybe(42).bind(get_user).bind(get_address).bind(get_postcode)
 
 <div style="color: #d4639a">
 
-The box handles everything. We don't have to think about it. This is nice.
+the box handles everything. we don't have to think about it. this is nice.
 
 </div>
 
@@ -178,13 +178,13 @@ The box handles everything. We don't have to think about it. This is nice.
 
 ---
 
-# More Monads! The Result Monad
+# more monads! the Result monad
 
-So Maybe has a problem — when something goes wrong it just... goes empty. Doesn't tell you *why*. This is annoying. Result fixes this.
+so Maybe has a problem — when something goes wrong it just... goes empty. doesn't tell you *why*. this is annoying. Result fixes this.
 
 <v-click>
 
-Two states:
+two states:
 - `Ok(value)` — it worked, here's the answer
 - `Err(message)` — it failed, here's why
 
@@ -205,7 +205,7 @@ def bind(self, func):
 
 <div style="color: #d4639a">
 
-Same bind, same pattern — but now the error message comes along for the ride. No more silent failures.
+same bind, same pattern — but now the error message comes along for the ride. no more silent failures.
 
 </div>
 
@@ -213,11 +213,11 @@ Same bind, same pattern — but now the error message comes along for the ride. 
 
 ---
 
-# Putting It Together: A Data Pipeline
+# putting it together: a data pipeline
 
 <v-click>
 
-Without monads:
+without monads:
 
 ```python
 data = read_csv("readings.csv")
@@ -235,7 +235,7 @@ if data is not None:
 
 <v-click>
 
-With Result:
+with Result:
 
 ```python
 result = (Result.ok("readings.csv")
@@ -250,9 +250,9 @@ result = (Result.ok("readings.csv")
 
 ---
 
-# The Same Trick, Different Box: Lists
+# the same trick, different box: lists
 
-Ok but what if the box has *multiple things in it*? Bind means: apply a function to each one, flatten the results.
+ok but what if the box has *multiple things in it*? bind means: apply a function to each one, flatten the results.
 
 <v-click>
 
@@ -286,7 +286,7 @@ List([1, 2, 3]).bind(expand)
 
 <div class="mt-4" style="color: #9b72cf">
 
-Maybe handles missing values. List handles multiple values. Same interface, same idea. I know. I know. Stay with me.
+Maybe handles missing values. List handles multiple values. same interface, same idea.
 
 </div>
 
@@ -321,43 +321,18 @@ hideInToc: true
 <div class="text-center">
 
 
-# YOU HAVE BEEN USING MONADS THIS ENTIRE TIME
+# **_YOU HAVE BEEN USING MONADS THIS ENTIRE TIME_**
 
-<v-click>
+im sorry nobody told u
 
-<div class="text-xl mt-8 opacity-80">
-
-</div>
-
-</v-click>
-
-<v-click>
-
-<div class="text-xl mt-4 opacity-80">
-
-excellent g
-
-</div>
-
-</v-click>
-
-<v-click>
-
-<div class="text-lg mt-8" style="color: #d4639a">
-
-anyway let's talk about the pattern
-
-</div>
-
-</v-click>
 
 </div>
 
 ---
 
-# The Pattern
+# the pattern
 
-Right, so what do these have in common? Three ingredients:
+right, so what do these have in common? three ingredients:
 
 <v-clicks>
 
@@ -377,9 +352,9 @@ Right, so what do these have in common? Three ingredients:
 
 <div class="mt-4" style="color: #d4639a">
 
-A box + wrap + bind. That's a monad.
+a box + wrap + bind. that's a monad.
 
-Where a class hides **state**, a monad hides **control flow**.
+where a class hides **state**, a monad hides **control flow**.
 
 </div>
 
@@ -388,54 +363,29 @@ Where a class hides **state**, a monad hides **control flow**.
 </v-click>
 
 ---
-layout: center
-hideInToc: true
----
 
-<div class="text-center">
+# the three rules
 
-<div class="text-lg opacity-60">
-
-ok we need to get a bit serious for a second
-
-</div>
-
-<v-click>
-
-<div class="text-lg mt-4 opacity-60">
-
-sorry
-
-</div>
-
-</v-click>
-
-</div>
-
----
-
-# The Three Rules
-
-What makes a box a *monad* and not just a box? What makes a box a *monad* and not just a box?
+ok we need to get a bit formal for a second. sorry. what makes a box a *monad* and not just a box?
 
 <v-clicks>
 
-1. **Left identity:** `Maybe(a).bind(f)` = `f(a)`
-   - Putting a value in a box and immediately using it should be the same as just using it. The box doesn't get in the way.
+1. **left identity:** `Maybe(a).bind(f)` = `f(a)`
+   - putting a value in a box and immediately using it should be the same as just using it. the box doesn't get in the way.
 
-2. **Right identity:** `m.bind(Maybe)` = `m`
-   - If all you do is re-wrap the value, nothing changes. The box doesn't add anything you didn't ask for.
+2. **right identity:** `m.bind(Maybe)` = `m`
+   - if all you do is re-wrap the value, nothing changes. the box doesn't add anything you didn't ask for.
 
-3. **Associativity:** `m.bind(f).bind(g)` = `m.bind(lambda x: f(x).bind(g))`
-   - It doesn't matter how you group a chain of operations — the result is the same. You can refactor freely.
+3. **associativity:** `m.bind(f).bind(g)` = `m.bind(lambda x: f(x).bind(g))`
+   - it doesn't matter how you group a chain of operations — the result is the same. you can refactor freely.
 
 </v-clicks>
 
 ---
 
-# Composing Monads
+# composing monads
 
-What if you have multiple files and each one might fail?
+what if you have multiple files and each one might fail?
 
 <v-click>
 
@@ -456,7 +406,7 @@ results = List(files).bind(process)
 
 <v-click>
 
-List handles the iteration. Result handles the errors. Each one does its job.
+List handles the iteration. Result handles the errors. each one does its job.
 
 </v-click>
 
@@ -464,7 +414,7 @@ List handles the iteration. Result handles the errors. Each one does its job.
 
 <div class="mt-4" style="color: #d4639a">
 
-You just compose them. They don't step on each other.
+you just compose them. they don't step on each other.
 
 </div>
 
@@ -474,14 +424,14 @@ You just compose them. They don't step on each other.
 
 ---
 
-# Why the Weird Name?
+# why the weird name?
 
 <v-clicks>
 
-- Monads come from **category theory** — a branch of abstract maths
+- monads come from **category theory** — a branch of abstract maths
 - Haskell borrowed the concept in the 1990s for handling side effects
-- The ideas are genuinely simple. The naming is genuinely terrible. This is a branding problem more than anything.
-- Most people learn monads by using them, then go "oh wait, *that's* what that was?"
+- the ideas are genuinely simple. the naming is genuinely terrible. this is a branding problem more than anything
+- most people learn monads by using them, then go "oh wait, *that's* what that was?"
 
 </v-clicks>
 
@@ -489,9 +439,9 @@ You just compose them. They don't step on each other.
 
 <div class="mt-8 text-center text-xl" style="color: #d4639a">
 
-You do not need category theory to use a monad.
+i love category theory but u don't need it for a monad.
 
-You need a box and a chain. I promise.
+you just need a box and a chain
 
 </div>
 
@@ -499,16 +449,16 @@ You need a box and a chain. I promise.
 
 ---
 
-# Monads vs Classes
+# monads vs classes
 
 <div class="grid grid-cols-2 gap-8 mt-4">
 
 <div>
 
-### A class gives you:
-- A wrapper for data (`__init__`)
-- Methods that operate on that data
-- Encapsulation — hide the internals
+### a class gives you:
+- a wrapper for data (`__init__`)
+- methods that operate on that data
+- encapsulation — hide the internals
 
 ```python
 class User:
@@ -522,10 +472,10 @@ class User:
 
 <div>
 
-### A monad gives you:
-- A wrapper for data (`wrap`)
-- A chaining operation (`bind`)
-- Encapsulation — hide the *control flow*
+### a monad gives you:
+- a wrapper for data (`wrap`)
+- a chaining operation (`bind`)
+- encapsulation — hide the *control flow*
 
 ```python
 class Maybe:
@@ -545,7 +495,7 @@ class Maybe:
 
 <div class="mt-4 text-center" style="color: #d4639a">
 
-Classes hide **what's inside**. Monads hide **what happens between steps**.
+classes hide **what's inside**. monads hide **what happens between steps**.
 
 </div>
 
@@ -553,9 +503,9 @@ Classes hide **what's inside**. Monads hide **what happens between steps**.
 
 ---
 
-# Why Not Just Use Classes?
+# why not just use classes?
 
-You *can* solve these problems with classes. People do. It gets messy.
+you *can* solve these problems with classes. people do. it gets messy.
 
 <v-click>
 
@@ -570,15 +520,15 @@ class AsyncLoggedValidatedCSVReader(LoggedValidatedCSVReader):  # OH NO
 
 <v-click>
 
-Monads compose through **chaining**, not inheritance. You snap boxes together.
+monads compose through **chaining**, not inheritance. you snap boxes together.
 
 ```python
 Result.ok("data.csv").bind(read_csv).bind(validate).bind(log)
 ```
 
-No inheritance tree. No diamond problem. No `AsyncLoggedValidatedSafeCSVReaderFactory`.
+no inheritance tree. no diamond problem. no `AsyncLoggedValidatedSafeCSVReaderFactory`.
 
-Rust doesn't even *have* inheritance. It uses monadic types instead. It's fine. It's better, actually.
+Rust doesn't even *have* inheritance. it uses monadic types instead. it's fine. it's better, actually.
 
 </v-click>
 
@@ -586,7 +536,7 @@ Rust doesn't even *have* inheritance. It uses monadic types instead. It's fine. 
 
 <div class="mt-4" style="color: #d4639a">
 
-Composition over inheritance. The box doesn't need to know about the other boxes.
+composition over inheritance. the box doesn't need to know about the other boxes.
 
 </div>
 
@@ -633,24 +583,24 @@ here is a gorilla holding a banana and the entire jungle
 
 ---
 
-# What If You Just... Didn't Have Variables?
+# what if you just... didn't have variables?
 
-So we've been using monads to make Python nicer. But some languages went further.
+so we've been using monads to make Python nicer. but some languages went further.
 
 <v-click>
 
-In Haskell, there's no mutable state. No variables. Just functions and values.
+in Haskell, there's no mutable state. no variables. just functions and values.
 
-So how do you do anything?
+so how do you do anything?
 
 </v-click>
 
 <v-clicks>
 
-- Need to read a file? **IO monad** — side effects live in a box
-- Need to track state? **State monad** — state gets threaded through the chain
-- Need randomness? The random seed is just state in a box
-- Need to print something? That's IO. **That's a monad too**
+- need to read a file? **IO monad** — side effects live in a box
+- need to track state? **State monad** — state gets threaded through the chain
+- need randomness? the random seed is just state in a box
+- need to print something? that's IO. **that's a monad too**
 
 </v-clicks>
 
@@ -658,9 +608,9 @@ So how do you do anything?
 
 <div class="mt-4" style="color: #d4639a">
 
-Haskell doesn't have variables. It has boxes. It's monads all the way down.
+Haskell doesn't have variables. it has boxes. it's monads all the way down.
 
-This either makes you want to learn Haskell or never touch it. Both are valid.
+**(This is why I thought last week's code club challenged was unfair. Imagine doing python without variables)**
 
 </div>
 
@@ -668,15 +618,15 @@ This either makes you want to learn Haskell or never touch it. Both are valid.
 
 ---
 
-# So About That Quote
+# so about that quote
 
-Remember this?
+remember this?
 
 > "A monad is just a monoid in the category of endofunctors"
 
 <v-click>
 
-A **functor** takes a function between values and lifts it to a function between boxes.
+a **functor** takes a function between values and lifts it to a function between boxes.
 
 <div class="mt-4 flex justify-center">
 <div class="text-center">
@@ -706,9 +656,9 @@ A **functor** takes a function between values and lifts it to a function between
 
 <v-click>
 
-An **endofunctor** is a functor from a category to itself — our boxes map Python types to Python types.
+an **endofunctor** is a functor from a category to itself — our boxes map Python types to Python types.
 
-A **monoid** is something with an identity and an associative operation — that's our three rules.
+a **monoid** is something with an identity and an associative operation — that's our three rules.
 
 </v-click>
 
@@ -716,7 +666,7 @@ A **monoid** is something with an identity and an associative operation — that
 
 <div class="mt-4" style="color: #d4639a">
 
-So yeah. A monad is a monoid in the category of endofunctors. You know what that means now.
+so yeah. a monad is a monoid in the category of endofunctors. you know what that means now.
 
 
 </div>
