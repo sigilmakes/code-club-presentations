@@ -96,47 +96,6 @@ this is horrible and I hate it and you should too.
 </v-click>
 
 ---
-layout: center
-hideInToc: true
----
-
-<div class="text-center">
-
-# STOP DOING NULL CHECKS
-
-<v-click>
-
-<div class="text-xl mt-8 opacity-80">
-
-THOUSANDS OF YEARS OF PROGRAMMING AND NO REAL WORLD USE FOUND FOR `if x is not None`
-
-</div>
-
-</v-click>
-
-<v-click>
-
-<div class="text-xl mt-4 opacity-80">
-
-WANTED TO CHAIN THREE FUNCTIONS TOGETHER? WE HAD A TOOL FOR THAT
-
-</div>
-
-</v-click>
-
-<v-click>
-
-<div class="text-2xl mt-8" style="color: #d4639a">
-
-IT WAS CALLED A MONAD
-
-</div>
-
-</v-click>
-
-</div>
-
----
 
 # a smarter box: Maybe
 
@@ -560,17 +519,13 @@ hideInToc: true
 
 <div class="text-center">
 
-<div class="text-2xl">
-
-"I need a banana"
-
-</div>
+# STOP DOING INHERITANCE
 
 <v-click>
 
-<div class="text-2xl mt-8">
+<div class="text-xl mt-8 opacity-80">
 
-here is a gorilla holding a banana and the entire jungle
+"I NEED A BANANA" → HERE IS A GORILLA HOLDING A BANANA AND THE ENTIRE JUNGLE
 
 </div>
 
@@ -580,7 +535,7 @@ here is a gorilla holding a banana and the entire jungle
 
 <div class="text-lg mt-8 opacity-60">
 
-— Joe Armstrong, creator of Erlang, on inheritance
+— Joe Armstrong, creator of Erlang
 
 </div>
 
