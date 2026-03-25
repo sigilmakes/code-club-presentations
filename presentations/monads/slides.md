@@ -472,7 +472,7 @@ Result.ok("data.csv").bind(read_csv).bind(validate).bind(log)
 
 No inheritance tree. No diamond problem. No `AsyncLoggedValidatedSafeCSVReaderFactory`.
 
-Rust doesn't even *have* inheritance. It uses `Result` and `Option` monads instead. It's fine. It's better, actually.
+Rust doesn't even *have* inheritance. It uses `Result` and `Option` — monadic types — instead. It's fine. It's better, actually.
 
 </v-click>
 
