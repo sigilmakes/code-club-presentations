@@ -185,10 +185,10 @@ So what do these boxes have in common? Three ingredients:
 1. **A box type** — wraps a value
    - `Maybe(42)`, `[1, 2, 3]`
 
-2. **A way to put things in** — wrap a value in the box
+2. **Wrap** — put a value in the box, written $\text{wrap}(x)$
    - `Maybe(x)`, `[x]`
 
-3. **A way to chain** — `bind`: take a boxed value, apply a function, get a new box
+3. **Bind** — chain operations on the box, written $m \gg\!= f$
    - Maybe's bind skips if empty
    - List's bind applies to each element and flattens
 
@@ -198,7 +198,7 @@ So what do these boxes have in common? Three ingredients:
 
 <div class="mt-4" style="color: #d4639a">
 
-A box + a way in + a way to chain. That's a monad.
+A box + wrap + bind. That's a monad.
 
 Where a class hides **state**, a monad hides **control flow**.
 
