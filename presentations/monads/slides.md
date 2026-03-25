@@ -447,6 +447,46 @@ Classes hide **what's inside**. Monads hide **what happens between steps**.
 
 ---
 
+# Why Not Just Use Classes?
+
+You *can* solve these problems with classes. People do. It gets messy.
+
+<v-click>
+
+```python
+class SafeCSVReader(BaseReader):           # inheritance
+class ValidatedCSVReader(SafeCSVReader):   # more inheritance
+class LoggedValidatedCSVReader(ValidatedCSVReader):  # oh no
+```
+
+Classes compose through **inheritance** — you stack behaviours by subclassing. This does not scale.
+
+</v-click>
+
+<v-click>
+
+Monads compose through **chaining** — you stack behaviours by combining boxes.
+
+```python
+Result.ok("data.csv").bind(read_csv).bind(validate).bind(log)
+```
+
+Each box does one thing. You snap them together. No inheritance tree. No diamond problem. No `LoggedValidatedSafeCSVReaderFactory`.
+
+</v-click>
+
+<v-click>
+
+<div class="mt-4" style="color: #d4639a">
+
+Composition over inheritance. The box doesn't need to know about the other boxes.
+
+</div>
+
+</v-click>
+
+---
+
 # So About That Quote
 
 Remember this?
