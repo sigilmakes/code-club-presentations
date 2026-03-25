@@ -624,7 +624,9 @@ it's monads all the way down.
 
 <v-click at="1">
 
-<img src="./images/teto.jpg" class="w-full rounded mt-8" />
+<div class="flex items-center justify-center h-full">
+<img src="./images/teto.jpg" class="w-80 rounded" />
+</div>
 
 </v-click>
 
