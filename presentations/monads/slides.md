@@ -651,13 +651,17 @@ hideInToc: true
 
 <div class="text-center">
 
-# STOP DOING INHERITANCE
+<div class="text-2xl">
+
+"I need a banana"
+
+</div>
 
 <v-click>
 
-<div class="text-xl mt-8 opacity-80">
+<div class="text-2xl mt-8">
 
-THOUSANDS OF YEARS OF OOP AND NO REAL WORLD USE FOUND FOR `class Dog(Animal)`
+here is a gorilla holding a banana and the entire jungle
 
 </div>
 
@@ -665,19 +669,9 @@ THOUSANDS OF YEARS OF OOP AND NO REAL WORLD USE FOUND FOR `class Dog(Animal)`
 
 <v-click>
 
-<div class="text-xl mt-4 opacity-80">
+<div class="text-lg mt-8 opacity-60">
 
-"I NEED A BANANA" → HERE IS A GORILLA HOLDING A BANANA AND THE ENTIRE JUNGLE
-
-</div>
-
-</v-click>
-
-<v-click>
-
-<div class="text-lg mt-8" style="color: #d4639a">
-
-composition won. it's over. go home
+— Joe Armstrong, creator of Erlang, on inheritance
 
 </div>
 
