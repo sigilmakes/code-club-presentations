@@ -133,7 +133,7 @@ Maybe(42).bind(get_user).bind(get_address).bind(get_postcode)
 
 <div style="color: #d4639a">
 
-the box handles everything and we don't have to think about it. yay :3
+the box handles everything and we don't have to think about it. yay \:3
 
 </div>
 
@@ -244,6 +244,8 @@ def expand(x):
 List([1, 2, 3]).bind(expand)
 # List([1, 10, 2, 20, 3, 30])
 ```
+
+</v-click>
 
 ---
 layout: center
