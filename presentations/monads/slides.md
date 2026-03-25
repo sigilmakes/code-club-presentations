@@ -63,7 +63,7 @@ much better
 
 # the problem
 
-so things go wrong when processing stuff.  you might do this:
+so things go wrong when processing stuff and you might do this:
 
 <v-click>
 
@@ -143,7 +143,7 @@ the box handles everything and we don't have to think about it. yay \:3
 
 # more monads! the Result monad
 
-ok so Maybe has a problem: when something goes wrong it just goes empty. doesn't tell you *why*. this is annoying, so Result fixes this.
+ok so Maybe has a problem: when something goes wrong it just goes empty and doesn't tell you *why*. this is annoying, so Result fixes this.
 
 <v-click>
 
@@ -474,8 +474,8 @@ Haskell only has functions and values, it doesn't have any mutable state. No var
 
 - need to read a file? **IO monad**
 - need to track state? **State monad**
-- need randomness? state in a box
-- need to print? that's IO. **monad too**
+- need randomness? **State monad**
+- need to print? **IO monad**
 
 </v-clicks>
 
@@ -483,7 +483,7 @@ Haskell only has functions and values, it doesn't have any mutable state. No var
 
 <div class="mt-4" style="color: #d4639a">
 
-monads all the way down :o
+monads all the way down \:o
 
 **(this is why i thought last week's code club challenge was unfair btw imagine doing python without variables)**
 
@@ -503,7 +503,7 @@ monads all the way down :o
 
 ---
 
-# functors! :o
+# functors! \:o
 
 remember this?
 
@@ -551,7 +551,7 @@ a **monoid** is something with an identity and an associative operation (that's 
 
 <div class="mt-4" style="color: #d4639a">
 
-a monad is a monoid in the category of endofunctors yayyy :3
+a monad is a monoid in the category of endofunctors yayyy \:3
 
 
 </div>
