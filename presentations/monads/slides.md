@@ -189,7 +189,7 @@ The *pattern* is always the same. What changes is what the box handles for you.
 | **Maybe / Optional** | A value that might be missing | Null checks |
 | **Result** | A value or an error | Error propagation |
 | **List** | Multiple values | Looping over combinations |
-| **Promise** | A value that isn't here yet | Async scheduling |
+| **IO** | A side effect waiting to happen | Keeping functions pure |
 
 </v-clicks>
 
