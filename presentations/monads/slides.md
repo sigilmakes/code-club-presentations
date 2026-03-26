@@ -115,7 +115,7 @@ class Maybe:
     def bind(self, func):
         if self.value is None:
             return Maybe(None)    # empty? skip it
-        return func(self.value)   # otherwise, run the function
+        return Maybe(func(self.value))   # wrap the result
 ```
 
 </v-click>
@@ -123,11 +123,11 @@ class Maybe:
 <v-click>
 
 ```python
-# these functions now return Maybe instead of bare values
+# the functions just return values or None like before
 Maybe(42).bind(get_user).bind(get_address).bind(get_postcode)
 
-# get_user(42) returns Maybe(user) or Maybe(None)
-# if any step returns Maybe(None), the chain stops
+# bind wraps the result — if get_user returns None,
+# it just propagates Maybe(None) through. no crashes, no ifs!
 ```
 
 </v-click>
@@ -162,7 +162,7 @@ two states:
 def bind(self, func):
     if self.is_err:
         return self               # failed? carry the error forward
-    return func(self.value)       # otherwise, keep going
+    return Result.ok(func(self.value))  # wrap the result
 ```
 
 </v-click>
@@ -384,7 +384,7 @@ class Maybe:
     def bind(self, func):
         if self.value is None:
             return Maybe(None)
-        return func(self.value)
+        return Maybe(func(self.value))
 ```
 
 </div>
