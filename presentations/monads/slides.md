@@ -310,7 +310,7 @@ ok what makes a box a *monad* and not just a box?
 
 <v-clicks>
 
-1. **left identity:** `Maybe(a).bind(f)` = `f(a)`
+1. **left identity:** `Maybe(a).bind(f)` = `Maybe(f(a))`
    - putting a value in a box and immediately using it should be the same as just using it.
 
 2. **right identity:** `m.bind(Maybe)` = `m`
