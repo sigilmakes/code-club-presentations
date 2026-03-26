@@ -158,7 +158,10 @@ two states:
 def bind(self, func):
     if self.is_err:
         return self
-    return Result.ok(func(self.value))
+    try:
+        return Result.ok(func(self.value))
+    except Exception as e:
+        return Result.err(str(e))
 ```
 
 </v-click>
