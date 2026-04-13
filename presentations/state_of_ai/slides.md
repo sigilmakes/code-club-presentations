@@ -864,10 +864,17 @@ If this sounds interesting:
 - Not sure how an agent can help? Confused by agents? Get in touch!
 
 ---
-layout: statement
 hideInToc: true
 ---
 
 # Thanks for listening
+
+### Get started
+- Pick one annoying task and try an agent on it! Claude Code, Codex, Opencode, or Pi are all good starting points
+- Not sure where to begin? That's what the interest group is for :)
+
+### Get in touch
+- Join the **Agentic AI Interest Group** — we'll be running workshops, evaluating tools, and sharing what we learn
+- Have ideas, constraints, or concerns? Bring them. Especially the concerns.
 
 ## What questions do you have?
